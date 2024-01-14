@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class TestClass1 {
     public static  void main(String[] args) {
@@ -94,9 +95,21 @@ public class TestClass1 {
         //boolean result = val.test("mike");
         //System.out.println(result);
 
-        List<Integer> data = Arrays.asList(10, 30, 21, 45, 66, 87, 87);
-        List<Integer> newData = data.stream().map(i -> i + 2).collect(Collectors.toList());
-        System.out.println(newData);
+        //List<Integer> data = Arrays.asList(10, 30, 21, 45, 66, 87, 87);
+        //List<Integer> newData = data.stream().map(i -> i + 2).collect(Collectors.toList());
+        //System.out.println(newData);
+
+        //Function<Integer,Integer> val=i->i+10;
+        //Integer result = val.apply(10);
+        //System.out.println(result);
+
+        //List<Integer> data = Arrays.asList(10, 32, 45, 65, 78, 76, 7, 2);
+        //List<Integer> NewData = data.stream().map(i -> i + 10).collect(Collectors.toList());
+        //System.out.println(NewData);
+
+        //List<String> data1 = Arrays.asList("mike", "chandan", "lisa", "dibya", "varsha");
+        //List<String> NewData1 = data1.stream().filter(s->s.startsWith("l")).collect(Collectors.toList());
+        //System.out.println(NewData1);
     }
 }
 //stream API
