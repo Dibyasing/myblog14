@@ -66,17 +66,37 @@ public class TestClass1 {
         //Consumer<Integer> result=number-> System.out.println(number);
         //result.accept(100);
 
-        List<Integer> data = Arrays.asList(10, 30, 60, 34, 22, 89, 90);
-        List<Integer> newData = data.stream().sorted().collect(Collectors.toList());
-        System.out.println(newData);
+        //List<Integer> data = Arrays.asList(10, 30, 60, 34, 22, 89, 90);
+        //List<Integer> newData = data.stream().sorted().collect(Collectors.toList());
+        //System.out.println(newData);
 
-        List<String> data1 = Arrays.asList("mike", "chandan", "kundan", "maxwell");
-        List<String> newString = data1.stream().filter(s -> s.startsWith("m")).collect(Collectors.toList());
-        List<String> newString1 = data1.stream().filter(s -> s.equals("maxwell")).collect(Collectors.toList());
-        List<String> newString2 = data1.stream().filter(s -> s.endsWith("n")).collect(Collectors.toList());
-        System.out.println(newString);
-        System.out.println(newString1);
-        System.out.println(newString2);
+        //List<String> data1 = Arrays.asList("mike", "chandan", "kundan", "maxwell");
+        //List<String> newString = data1.stream().filter(s -> s.startsWith("m")).collect(Collectors.toList());
+        //List<String> newString1 = data1.stream().filter(s -> s.equals("maxwell")).collect(Collectors.toList());
+        //List<String> newString2 = data1.stream().filter(s -> s.endsWith("n")).collect(Collectors.toList());
+        //System.out.println(newString);
+        //System.out.println(newString1);
+        //System.out.println(newString2);
+
+        //Predicate<Integer> val = y->y%2==0;
+        //boolean result = val.test(10);
+        //System.out.println(result);
+
+        //Predicate<Integer>val1= x->x%2==0;
+        //boolean result1 = val1.test(20);
+        //System.out.println(result1);
+
+        //Predicate<Integer> data2 =z->z%2!=0;
+        //boolean test = data2.test(20);
+        //System.out.println(test);
+
+        //Predicate<String> val=str->str.equals("mike");
+        //boolean result = val.test("mike");
+        //System.out.println(result);
+
+        List<Integer> data = Arrays.asList(10, 30, 21, 45, 66, 87, 87);
+        List<Integer> newData = data.stream().map(i -> i + 2).collect(Collectors.toList());
+        System.out.println(newData);
     }
 }
 //stream API
