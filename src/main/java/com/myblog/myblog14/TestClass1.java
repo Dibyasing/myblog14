@@ -63,7 +63,20 @@ public class TestClass1 {
         //List<Integer> newData = data.stream().distinct().collect(Collectors.toList());
         //System.out.println(newData);
 
-        Consumer<Integer> result=number-> System.out.println(number);
-        result.accept(100);
+        //Consumer<Integer> result=number-> System.out.println(number);
+        //result.accept(100);
+
+        List<Integer> data = Arrays.asList(10, 30, 60, 34, 22, 89, 90);
+        List<Integer> newData = data.stream().sorted().collect(Collectors.toList());
+        System.out.println(newData);
+
+        List<String> data1 = Arrays.asList("mike", "chandan", "kundan", "maxwell");
+        List<String> newString = data1.stream().filter(s -> s.startsWith("m")).collect(Collectors.toList());
+        List<String> newString1 = data1.stream().filter(s -> s.equals("maxwell")).collect(Collectors.toList());
+        List<String> newString2 = data1.stream().filter(s -> s.endsWith("n")).collect(Collectors.toList());
+        System.out.println(newString);
+        System.out.println(newString1);
+        System.out.println(newString2);
     }
 }
+//stream API
