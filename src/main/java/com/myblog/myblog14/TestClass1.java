@@ -4,9 +4,11 @@ import io.micrometer.common.KeyValues;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -110,6 +112,24 @@ public class TestClass1 {
         //List<String> data1 = Arrays.asList("mike", "chandan", "lisa", "dibya", "varsha");
         //List<String> NewData1 = data1.stream().filter(s->s.startsWith("l")).collect(Collectors.toList());
         //System.out.println(NewData1);
+
+        //Supplier<Integer> x=()->new Random().nextInt(10000);
+        //Integer y=x.get();
+        //System.out.println(y);
+
+        List<Login> logins=Arrays.asList(
+                new Login("mike","Dibya@123"),
+                new Login("stallin","testing"),
+                new Login("Pankaj","PSA")
+        );
+        List<LoginDto>dtos=logins.stream().map(login->mapToDto(login)).collect(Collectors.toList());
+        System.out.println(dtos);
+    }
+    static LoginDto mapToDto(Login login){
+        LoginDto dto=new LoginDto();
+        dto.setUserName(login.getUserName());
+        dto.setPassword(login.getPassword());
+        return dto;
     }
 }
 //stream API
