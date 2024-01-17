@@ -4,12 +4,12 @@ public class Employee {
     private String Name;
     private int Age;
 
-    private String Gender;
+    private String City;
 
-    public Employee(String name, int age, String gender) {
+    public Employee(String name, int age, String city) {
         this.Name = name;
         this.Age = age;
-        this.Gender = gender;
+        this.City = city;
     }
 
     public String getName() {
@@ -20,8 +20,8 @@ public class Employee {
         return Age;
     }
 
-    public String getGender() {
-        return Gender;
+    public String getCity() {
+        return City;
     }
 }
 

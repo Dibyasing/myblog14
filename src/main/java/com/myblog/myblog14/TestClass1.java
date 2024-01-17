@@ -127,15 +127,36 @@ public class TestClass1 {
         //List<String> result = list2.stream().filter(s -> s.startsWith("R")).map(s -> s.toUpperCase()).collect(Collectors.toList());
         //System.out.println(result);
 
-        List<Employee> employees = Arrays.asList(
-                new Employee("Dibya", 20, "Male"),
-                new Employee("Lisa", 34, "Female"),
-                new Employee("Varsha", 33, "Female"),
-                new Employee("Tulu", 32, "Male")
+        //List<Employee> employees = Arrays.asList(
+                //new Employee("Dibya", 20, "Male"),
+                //new Employee("Lisa", 34, "Female"),
+                //new Employee("Varsha", 33, "Female"),
+                //new Employee("Tulu", 32, "Male")
+        //);
+        //Map<Integer, List<Employee>> val = employees.stream().collect(Collectors.groupingBy(e -> e.getAge()));
+        //System.out.println(val);
+
+        //List<Integer> var = Arrays.asList(10, 32, 5, 3, 2, 45, 65, 43, 21);
+        //List<Integer> collect = var.stream().filter(i -> i>=50).map(i -> i * i).collect(Collectors.toList());
+        //System.out.println(collect);
+
+        List<Employee> list = Arrays.asList(
+                new Employee("Ram",32,"Banglore"),
+                new Employee("Swayam",21,"Cuttack"),
+                new Employee("Kundan",22,"Bhubaneswar")
         );
-        Map<Integer, List<Employee>> val = employees.stream().collect(Collectors.groupingBy(e -> e.getAge()));
-        System.out.println(val);
+        Map<Integer, List<Employee>> collect1 = list.stream().collect(Collectors.groupingBy(e -> e.getAge()));
+        for ( Map.Entry<Integer, List<Employee>> entry:collect1.entrySet()){
+            int age = entry.getKey();
+            List<Employee> employeesWithAge = entry.getValue();
+            System.out.println("age:"+age+"---");
+            for(Employee e:employeesWithAge){
+                System.out.println(e.getCity());
+                System.out.println(e.getName());
+            }
+        }
     }
+
 
 }
 //stream API
