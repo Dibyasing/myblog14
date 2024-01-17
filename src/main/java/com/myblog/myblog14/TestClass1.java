@@ -1,16 +1,10 @@
 package com.myblog.myblog14;
 
-import io.micrometer.common.KeyValues;
-
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.Map;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class TestClass1 {
     public static  void main(String[] args) {
@@ -117,19 +111,31 @@ public class TestClass1 {
         //Integer y=x.get();
         //System.out.println(y);
 
-        List<Login> logins=Arrays.asList(
-                new Login("mike","Dibya@123"),
-                new Login("stallin","testing"),
-                new Login("Pankaj","PSA")
+        //List<String> data1 = Arrays.asList("mike", "chandan", "kundan", "maxwell");
+        //List<String> newString = data1.stream().filter(s -> s.startsWith("m")).collect(Collectors.toList());
+        //System.out.println(newString);
+
+        //List<Integer> list = Arrays.asList(10, 23, 21, 45, 65, 33, 76, 85);
+        //List<Integer> collect = list.stream().filter(i -> i % 2 == 0).map(i -> i * i).collect(Collectors.toList());
+        //System.out.println(collect);
+
+        //List<Integer> list1 = Arrays.asList(1, 4, 2, 7, 4, 5, 6, 5);
+        //List<Integer> collect1 = list1.stream().filter(odd -> odd % 2 != 0).map(odd -> odd * odd).collect(Collectors.toList());
+        //System.out.println(collect1);
+
+        //List<String> list2 = Arrays.asList("Asish", "Lodu", "Ram", "Suresh", "Samarth");
+        //List<String> result = list2.stream().filter(s -> s.startsWith("R")).map(s -> s.toUpperCase()).collect(Collectors.toList());
+        //System.out.println(result);
+
+        List<Employee> employees = Arrays.asList(
+                new Employee("Dibya", 20, "Male"),
+                new Employee("Lisa", 34, "Female"),
+                new Employee("Varsha", 33, "Female"),
+                new Employee("Tulu", 32, "Male")
         );
-        List<LoginDto>dtos=logins.stream().map(login->mapToDto(login)).collect(Collectors.toList());
-        System.out.println(dtos);
+        Map<Integer, List<Employee>> val = employees.stream().collect(Collectors.groupingBy(e -> e.getAge()));
+        System.out.println(val);
     }
-    static LoginDto mapToDto(Login login){
-        LoginDto dto=new LoginDto();
-        dto.setUserName(login.getUserName());
-        dto.setPassword(login.getPassword());
-        return dto;
-    }
+
 }
 //stream API
