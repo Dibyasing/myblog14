@@ -140,19 +140,35 @@ public class TestClass1 {
         //List<Integer> collect = var.stream().filter(i -> i>=50).map(i -> i * i).collect(Collectors.toList());
         //System.out.println(collect);
 
+        //List<Employee> list = Arrays.asList(
+                //new Employee("Ram",32,"Banglore"),
+                //new Employee("Swayam",21,"Cuttack"),
+                //new Employee("Kundan",22,"Bhubaneswar")
+       // );
+        //Map<Integer, List<Employee>> collect1 = list.stream().collect(Collectors.groupingBy(e -> e.getAge()));
+        //for ( Map.Entry<Integer, List<Employee>> entry:collect1.entrySet()){
+            //int age = entry.getKey();
+           // List<Employee> employeesWithAge = entry.getValue();
+            //System.out.println("age:"+age+"---");
+            //for(Employee e:employeesWithAge){
+                //System.out.println(e.getCity());
+                //System.out.println(e.getName());
+           // }
+       // }
+
         List<Employee> list = Arrays.asList(
-                new Employee("Ram",32,"Banglore"),
-                new Employee("Swayam",21,"Cuttack"),
-                new Employee("Kundan",22,"Bhubaneswar")
+                new Employee("Swadesh", 21, "Kendrapara"),
+                new Employee("Swetapallabita", 34, "Cuttack"),
+                new Employee("Mina ma", 35, "Bhubaneswar")
         );
-        Map<Integer, List<Employee>> collect1 = list.stream().collect(Collectors.groupingBy(e -> e.getAge()));
-        for ( Map.Entry<Integer, List<Employee>> entry:collect1.entrySet()){
+        Map<Integer, List<Employee>> collect = list.stream().collect(Collectors.groupingBy(e -> e.getAge()));
+        for (Map.Entry<Integer, List<Employee>>entry:collect.entrySet()){
             int age = entry.getKey();
-            List<Employee> employeesWithAge = entry.getValue();
-            System.out.println("age:"+age+"---");
-            for(Employee e:employeesWithAge){
-                System.out.println(e.getCity());
-                System.out.println(e.getName());
+            List<Employee> value = entry.getValue();
+            System.out.println(value);
+            for (Employee v:value){
+                System.out.println(v.getName());
+                System.out.println(v.getCity());
             }
         }
     }
