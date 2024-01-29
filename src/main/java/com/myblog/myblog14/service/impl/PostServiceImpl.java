@@ -1,11 +1,15 @@
 package com.myblog.myblog14.service.impl;
 
 
+import com.myblog.myblog14.Entity.Comment;
 import com.myblog.myblog14.Entity.Post;
 import com.myblog.myblog14.Exception.ResourceNotFoundException;
+import com.myblog.myblog14.payload.CommentDto;
 import com.myblog.myblog14.payload.PostDto;
+import com.myblog.myblog14.repository.CommentsRepository;
 import com.myblog.myblog14.repository.PostRepository;
 import com.myblog.myblog14.service.PostService;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,10 +23,12 @@ import java.util.stream.Collectors;
 public class PostServiceImpl implements PostService {
     private PostRepository postRepository;
 
-    public PostServiceImpl(PostRepository postRepository) {
+    private ModelMapper modelMapper;
+
+    public PostServiceImpl(PostRepository postRepository,ModelMapper modelMapper) {
 
         this.postRepository = postRepository;
-
+        this.modelMapper=modelMapper;
 }
 
     @Override
@@ -61,18 +67,17 @@ public class PostServiceImpl implements PostService {
         return dtos;
     }
 
-    PostDto mapToDto(Post post){
-        PostDto dto = new PostDto();
-        dto.setTitle(post.getTitle());
-        dto.setContent(post.getContent());
-        dto.setDescription(post.getDescription());
+    PostDto mapToDto(Post post){//Entity to Dto
+        PostDto dto=modelMapper.map(post,PostDto.class);
         return dto;
     }
-    Post mapToEntity(PostDto postDto){
-        Post post = new Post();
-        post.setTitle(postDto.getTitle());
-        post.setContent(postDto.getContent());
-        post.setDescription(postDto.getDescription());
+    Post mapToEntity(PostDto postDto){//Dto to Entity
+        Post post=modelMapper.map(postDto,Post.class);
         return post;
+
     }
+    //Post mapToupdateEntity(PostDto postDto){
+        //Post post=modelMapper.map(comment, CommentDto.class);
+        //return post;
+    //}
 }

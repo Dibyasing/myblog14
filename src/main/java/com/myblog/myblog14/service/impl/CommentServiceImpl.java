@@ -33,4 +33,17 @@ public class CommentServiceImpl implements CommentService {
         }
         return null;
     }
+
+    @Override
+    public void deletecomment(long id) {
+        commentsRepository.deleteById(id);
+
+    }
+
+    @Override
+    public void updateComment(long id, CommentDto commentDto) {
+        commentsRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFoundException("Resource not found by id:" + id)
+        )
+    }
 }
