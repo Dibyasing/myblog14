@@ -1,5 +1,6 @@
 package com.myblog.myblog14.controller;
 
+import com.myblog.myblog14.Entity.Comment;
 import com.myblog.myblog14.payload.CommentDto;
 import com.myblog.myblog14.repository.CommentsRepository;
 import com.myblog.myblog14.service.CommentService;
@@ -13,7 +14,7 @@ public class CommintController {
 
     private CommentService commentService;
     @PostMapping
-    public ResponseEntity<CommentDto>createComment(
+    public ResponseEntity<?>createComment(
             @RequestBody CommentDto commentDto,
             @RequestParam long Postid)
     {
@@ -21,17 +22,18 @@ public class CommintController {
         return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String>deletecomment(@PathVariable long id){
+    public ResponseEntity<?>deletecomment(@PathVariable long id){
         commentService.deletecomment(id);
         return new ResponseEntity<>("comment is deleted!!",HttpStatus.OK);
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<String>updatecomment(@PathVariable long id,@RequestBody CommentDto commentDto){
-        commentService.updateComment(id, commentDto);
-        return new ResponseEntity<>("comment is updated!!",HttpStatus.CREATED);
+    @PutMapping("/{id}/post/{postId}")
+    public ResponseEntity<CommentDto>updatecomment(@PathVariable long id,@RequestBody CommentDto commentDto,@PathVariable long postId){
+        CommentDto dto = commentService.updateComment(id, commentDto,postId);
+        return new ResponseEntity<>(dto,HttpStatus.OK);
     }
 
 }
+
 
 
 
