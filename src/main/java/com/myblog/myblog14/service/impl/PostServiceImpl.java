@@ -1,12 +1,9 @@
 package com.myblog.myblog14.service.impl;
 
 
-import com.myblog.myblog14.Entity.Comment;
 import com.myblog.myblog14.Entity.Post;
 import com.myblog.myblog14.Exception.ResourceNotFoundException;
-import com.myblog.myblog14.payload.CommentDto;
 import com.myblog.myblog14.payload.PostDto;
-import com.myblog.myblog14.repository.CommentsRepository;
 import com.myblog.myblog14.repository.PostRepository;
 import com.myblog.myblog14.service.PostService;
 import org.modelmapper.ModelMapper;
@@ -33,16 +30,18 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public PostDto createPost(PostDto postDto) {
-        Post post = mapToEntity(postDto);
-        Post savedPost =postRepository.save(post);
-        PostDto dto = mapToDto(savedPost);
-        return dto;
+        return null;
+    }
 
-        //PostDto dto = new PostDto();
-        //dto.setTitle(savedPost.getTitle());
-        //dto.setContent(savedPost.getContent());
-        //dto.setDescription(savedPost.getDescription());
-        //return dto;
+    @Override
+    public PostDto createpost(PostDto postDto) {
+        Post post = mapToEntity(postDto);
+
+        Post save = postRepository.save(post);
+
+
+        PostDto dto = mapToDto(save);
+        return null;
     }
 
     @Override
