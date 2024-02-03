@@ -18,7 +18,7 @@ public class Comment {
     private String text;
     private String email;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name="post_id")
     private Post post;
 }
