@@ -23,7 +23,7 @@ public class PostController {
     //https://localhost:8080/api/posts
     @PreAuthorize("hasRole('ADMIN')")//by this ony Admin can create the post
     @PostMapping
-    public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto){
+    public ResponseEntity<PostDto> createPost( @RequestBody PostDto postDto){
         PostDto dto = postService.createPost(postDto);
         return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
